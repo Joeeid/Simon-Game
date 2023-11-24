@@ -4,6 +4,8 @@ var userClickedPattern = [];
 var gameStarted = false;
 var level = 0;
 
+$(".btn").prop("disabled", true);
+
 function nextSequence() {
 	var randomNumber = Math.floor(Math.random() * 4);
 	var randomChosenColor = buttonColours[randomNumber];
@@ -33,6 +35,7 @@ function startOver() {
 	userClickedPattern = [];
 	gameStarted = false;
 	level = 0;
+	$(".btn").prop("disabled", true);
 }
 
 function checkAnswer(level) {
@@ -61,6 +64,7 @@ function checkAnswer(level) {
 $(document).keypress(() => {
 	if (!gameStarted) {
 		gameStarted = true;
+		$(".btn").prop("disabled", false);
 		$("#level-title").text("Level 0");
 		nextSequence();
 	}
